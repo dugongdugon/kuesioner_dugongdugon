@@ -83,6 +83,12 @@
   </select>
 </div>
 
+<label for="nomor_kontak_yang_dapat_dihubungi">Nomor Kontak Yang Dapat Dihubungi</label><br>
+<input type="text"
+       id="nomor_kontak_yang_dapat_dihubungi"
+       name="nomor_kontak_yang_dapat_dihubungi"
+</div>
+
 <hr>
 
 <h3>A. Pengetahuan Dugong</h3>
@@ -143,18 +149,185 @@
   4. Tidak pernah
 </label>
 
-<!-- PERTANYAAN STRANDING -->
+<br><br>
+
+<!-- Pertanyaan: Jumlah individu -->
+<label><b>Jumlah individu yang dilihat</b></label><br>
+
+<label>
+   <input type="radio" name="jumlah_individu" value="sendirian" required>
+   Sendirian
+</label><br>
+
+<label>
+   <input type="radio" name="jumlah_individu" value="berpasangan">
+   Berpasangan
+</label><br>
+
+<label>
+   <input type="radio" name="jumlah_individu" value="kelompok_kecil">
+   Kelompok kecil
+</label><br>
+
+<label>
+   <input type="radio" name="jumlah_individu" value="kelompok_besar">
+   Kelompok besar
+</label>
+
+<br><br>
+
+<label><b>Kondisi Duyung saat dilihat</b></label><br>
+
+<label>
+  <input type="checkbox" name="kondisi_duyung[]" value="sehat_aktif">
+  Sehat / aktif
+</label><br>
+
+<label>
+  <input type="checkbox" name="kondisi_duyung[]" value="lemah">
+  Lemah
+</label><br>
+
+<label>
+  <input type="checkbox" name="kondisi_duyung[]" value="terluka">
+  Terluka
+</label><br>
+
+<label>
+  <input type="checkbox" name="kondisi_duyung[]" value="sedang_makan">
+  Sedang makan
+</label><br>
+
+<label>
+  <input type="checkbox" name="kondisi_duyung[]" value="sedang_berenang">
+  Sedang berenang
+</div>
+
 <div id="stranding" style="display:none; margin-top:20px;">
   <h4>Pertanyaan Terdampar</h4>
-  <label>Pernah menemukan dugong terdampar?</label><br>
-  <input type="text">
+
+  <label><b>Pernah menemukan dugong terdampar (hidup/mati)?</b></label><br>
+
+  <label>
+    <input type="radio" name="status_stranding" value="hidup">
+    Ya, hidup
+  </label><br>
+
+  <label>
+    <input type="radio" name="status_stranding" value="mati">
+    Ya, mati
+  </label><br>
+
+  <label>
+    <input type="radio" name="status_stranding" value="tidak_pernah">
+    Tidak pernah
+  </label><br>
+
+  <label>
+    <input type="radio" name="status_stranding" value="hanya_mendengar">
+    Hanya mendengar
+  </label>
+
+<br><br>
+
+<label><b>Perkiraan panjang dan berat dugong (jika diukur)</b></label><br>
+
+<label>
+  Panjang (meter):
+  <input type="number" step="0.1" min="0" placeholder="contoh: 2.5">
+</label>
+<br><br>
+
+<label>
+  Berat (kg):
+  <input type="number" step="1" min="0" placeholder="contoh: 300">
 </div>
+
 
 <!-- PERTANYAAN BY CATCH -->
 <div id="bycatch" style="display:none; margin-top:20px;">
-  <h4>Pertanyaan By Catch</h4>
-  <label>Alat tangkap yang digunakan?</label><br>
-  <input type="text">
+<h4>Pertanyaan By Catch</h4>
+
+<label><b>Pernah menangkap Duyung tidak sengaja (by catch)?</b></label><br>
+
+<label>
+  <input type="radio" name="bycatch_status" value="ya_sendiri" required>
+  1. Ya, sendiri
+</label><br>
+
+<label>
+  <input type="radio" name="bycatch_status" value="ya_orang_lain">
+  2. Ya, orang lain
+</label><br>
+
+<label>
+  <input type="radio" name="bycatch_status" value="tidak">
+  3. Tidak
+</label><br>
+
+<label>
+  <input type="radio" name="bycatch_status" value="tidak_menjawab">
+  4. Tidak menjawab
+</label>
+
+<br><br>
+
+<label><b>Jika pernah, alat tangkap apa yang digunakan?</b></label><br>
+
+<label>
+  <input type="checkbox" name="alat_tangkap[]" value="jaring_insang">
+  Jaring insang
+</label><br>
+
+<label>
+  <input type="checkbox" name="alat_tangkap[]" value="pukat">
+  Pukat
+</label><br>
+
+<label>
+  <input type="checkbox" name="alat_tangkap[]" value="pancing">
+  Pancing
+</label><br>
+
+<label>
+  <input type="checkbox" name="alat_tangkap[]" value="bubu">
+  Bubu
+</label><br>
+
+<label>
+  <input type="checkbox" name="alat_tangkap[]" value="lainnya">
+  Lainnya:
+  <input type="text" placeholder="sebutkan alat tangkap">
+</label>
+
+<br><br>
+
+<label><b>Apa yang dilakukan saat menemukan / by catch?</b></label><br>
+
+<label>
+  <input type="checkbox" name="tindakan_bycatch[]" value="dilepaskan">
+  Dilepaskan
+</label><br>
+
+<label>
+  <input type="checkbox" name="tindakan_bycatch[]" value="dibawa_pulang">
+  Dibawa pulang
+</label><br>
+
+<label>
+  <input type="checkbox" name="tindakan_bycatch[]" value="dilaporkan">
+  Dilaporkan
+</label><br>
+
+<label>
+  <input type="checkbox" name="tindakan_bycatch[]" value="dibiarkan">
+  Dibiarkan
+</label><br>
+
+<label>
+  <input type="checkbox" name="tindakan_bycatch[]" value="lainnya">
+  Lainnya:
+  <input type="text" placeholder="jelaskan">
 </div>
 
 <script>
@@ -174,6 +347,7 @@ document.getElementById("jenisKejadian").addEventListener("change", function () 
 </html>
 
 <hr>
+
     <div class="form-group">
         <label>Tentukan lokasi pada peta:</label>
         <div id="map"></div>
@@ -235,3 +409,18 @@ document.getElementById("jenisKejadian").addEventListener("change", function () 
 
 </body>
 </html>
+
+<br><br>
+<hr>
+
+<h4>Informasi Kontak</h4>
+
+<p>
+  <b>Nama:</b> Joshua Tampubolon<br>
+  <b>Nomor Kontak:</b>
+  <a href="tel:+6281368683007">+62 813-6868-3007</a><br>
+  <b>Email:</b>
+  <a href="mailto:tampubolonjoshua09@gmail.com">
+    tampubolonjoshua09@gmail.com
+  </a>
+</p>
