@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuesioner Keberadaan Dugong</title>
+
+    <!-- CSS Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+        body {
+            font-family: Poppins, Semi Bold;
+            margin: 20px;
+        }
+        #map {
+            height: 400px;
+            margin-top: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-group" style="text-align:center;">
+  <img src="https://originaldiving.d3r.site/images/hero_xlarge/559030-istock-1409341603.jpg"
+       alt="Dugong"
+       style="max-width:500px; border-radius:8px;">
+</div>
+<hr>
+<body>
+
+<h2>Kuesioner Keberadaan Dugong</h2>
+
+<form id="surveyForm">
+
+    <div class="form-group">
+  <label>Nama:</label><br>
+  <input type="text" name="nama" placeholder="Masukkan nama lengkap" required>
+</div>
+
+<div class="form-group">
+  <label>Jenis Kelamin:</label><br>
+  <input type="radio" name="jenis_kelamin" value="Laki-laki" required> Laki-laki<br>
+  <input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan
+</div>
+
+<div class="form-group">
+  <label>Usia:</label><br>
+  <select name="usia" required>
+    <option value="">-- Pilih rentang usia --</option>
+    <option value="Remaja (13–19)">Remaja (13–19 tahun)</option>
+    <option value="Dewasa (20–59)">Dewasa (20–59 tahun)</option>
+    <option value="Lansia (≥60)">Lansia / Lanjut Usia (60 tahun ke atas)</option>
+  </select>
+</div>
+
+<label for="tempat_lahir">Tempat Lahir</label><br>
+<input type="text"
+       id="tempat_lahir"
+       name="tempat_lahir"
+       placeholder="Contoh: Bintan, Kepulauan Riau"
+       required>
+
+    <div class="form-group">
+        <label>Pekerjaan:</label><br>
+        <input type="text" name="pekerjaan" required>
+    </div>
+
+<div class="form-group">
+  <label>Pendidikan Terakhir:</label><br>
+  <select name="pendidikan_terakhir" required>
+    <option value="">-- Pilih pendidikan terakhir --</option>
+    <option value="Tidak sekolah">Tidak sekolah</option>
+    <option value="SD">SD</option>
+    <option value="SMP">SMP</option>
+    <option value="SMA">SMA</option>
+    <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+  </select>
+</div>
+
+<hr>
+
+<h3>A. Pengetahuan Dugong</h3>
+
+<div class="form-group">
+  <label>Apakah Anda mengenal dugong/ikan duyung?</label><br>
+  <input type="radio" name="kenal" value="Ya" required> Ya
+  <input type="radio" name="kenal" value="Tidak"> Tidak
+
+<div <label for="sumber_dugong">Dari mana Anda mengetahui dugong?</b></label><br>
+<input type="text"
+       id="sumber_dugong"
+       name="sumber_dugong"
+       placeholder="Contoh: melihat langsung, cerita nelayan, media, dll"
+       required>
+
+<div <label>Seberapa sering menurut Anda dugong terlihat di perairan sekitar sini?</b></label><br>
+
+<label><input type="radio" name="frekuensi_dugong" value="1" required> 1</label> Tidak pernah<br>
+<label><input type="radio" name="frekuensi_dugong" value="2"> 2</label> Jarang (&lt;1x/tahun)<br>
+<label><input type="radio" name="frekuensi_dugong" value="3"> 3</label> Kadang (1–4x/tahun)<br>
+<label><input type="radio" name="frekuensi_dugong" value="4"> 4</label> Cukup sering (5–12x/tahun)<br>
+<label><input type="radio" name="frekuensi_dugong" value="5"> 5</label> Sering (&gt;12x/tahun)
+
+<hr>
+
+<h3>B. Jenis Kejadian</h3>
+
+<select id="jenisKejadian">
+  <option value="">-- Pilih Kejadian --</option>
+  <option value="sighting">Sighting (Penampakan)</option>
+  <option value="stranding">Stranding (Terdampar)</option>
+  <option value="bycatch">By Catch</option>
+</select>
+
+<!-- PERTANYAAN SIGHTING -->
+<div id="sighting" style="display:none; margin-top:20px;">
+  <h4>Pertanyaan Penampakan</h4>
+  <label><b>Pernah melihat duyung hidup secara langsung?</b></label><br>
+
+<label>
+  <input type="radio" name="melihat_duyung" value="sering" required>
+  1. Ya, sering (&gt;5x)
+</label><br>
+
+<label>
+  <input type="radio" name="melihat_duyung" value="beberapa_kali">
+  2. Ya, beberapa kali (2–5x)
+</label><br>
+
+<label>
+  <input type="radio" name="melihat_duyung" value="sekali">
+  3. Ya, sekali
+</label><br>
+
+<label>
+  <input type="radio" name="melihat_duyung" value="tidak_pernah">
+  4. Tidak pernah
+</label>
+
+<!-- PERTANYAAN STRANDING -->
+<div id="stranding" style="display:none; margin-top:20px;">
+  <h4>Pertanyaan Terdampar</h4>
+  <label>Pernah menemukan dugong terdampar?</label><br>
+  <input type="text">
+</div>
+
+<!-- PERTANYAAN BY CATCH -->
+<div id="bycatch" style="display:none; margin-top:20px;">
+  <h4>Pertanyaan By Catch</h4>
+  <label>Alat tangkap yang digunakan?</label><br>
+  <input type="text">
+</div>
+
+<script>
+document.getElementById("jenisKejadian").addEventListener("change", function () {
+
+  document.getElementById("sighting").style.display = "none";
+  document.getElementById("stranding").style.display = "none";
+  document.getElementById("bycatch").style.display = "none";
+
+  if (this.value !== "") {
+    document.getElementById(this.value).style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>
+
+<hr>
+    <div class="form-group">
+        <label>Tentukan lokasi pada peta:</label>
+        <div id="map"></div>
+    </div>
+
+    <!-- Koordinat tersembunyi -->
+    <input type="hidden" id="lat" name="lat">
+    <input type="hidden" id="lng" name="lng">
+
+    <button type="submit">Kirim Kuesioner</button>
+
+</form>
+
+<!-- JS Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // Inisialisasi peta
+    var map = L.map('map').setView([1.05, 104.03], 10); // contoh: Bintan
+
+    // Basemap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    var marker;
+
+    // Event klik peta
+    map.on('click', function(e) {
+        var lat = e.latlng.lat;
+        var lng = e.latlng.lng;
+
+        // Hapus marker lama
+        if (marker) {
+            map.removeLayer(marker);
+        }
+
+        // Tambah marker baru
+        marker = L.marker([lat, lng]).addTo(map);
+
+        // Simpan koordinat
+        document.getElementById('lat').value = lat;
+        document.getElementById('lng').value = lng;
+    });
+
+    // Submit form
+    document.getElementById('surveyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (!document.getElementById('lat').value) {
+            alert("Silakan pilih lokasi di peta terlebih dahulu!");
+            return;
+        }
+
+        alert("Kuesioner berhasil dikirim!");
+        // nanti di sini bisa dikirim ke database / spreadsheet
+    });
+</script>
+
+</body>
+</html>
