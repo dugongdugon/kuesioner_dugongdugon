@@ -32,13 +32,13 @@
        style="max-width:500px; border-radius:8px;">
 </div>
 <hr>
-<body>
+
 
 <h2>Kuesioner Keberadaan Dugong</h2>
 
 <form id="surveyForm">
 
-    <div class="form-group">
+  <div class="form-group">
   <label>Nama:</label><br>
   <input type="text" name="nama" placeholder="Masukkan nama lengkap" required>
 </div>
@@ -59,12 +59,14 @@
   </select>
 </div>
 
+<div class="form-group">
 <label for="tempat_lahir">Tempat Lahir</label><br>
 <input type="text"
        id="tempat_lahir"
        name="tempat_lahir"
        placeholder="Contoh: Bintan, Kepulauan Riau"
        required>
+</div>
 
     <div class="form-group">
         <label>Pekerjaan:</label><br>
@@ -83,10 +85,12 @@
   </select>
 </div>
 
-<label for="nomor_kontak_yang_dapat_dihubungi">Nomor Kontak Yang Dapat Dihubungi</label><br>
+<div class="form-group">
+<label>Nomor Kontak Yang Dapat Dihubungi</label><br>
 <input type="text"
        id="nomor_kontak_yang_dapat_dihubungi"
        name="nomor_kontak_yang_dapat_dihubungi"
+       required>
 </div>
 
 <hr>
@@ -97,21 +101,26 @@
   <label>Apakah Anda mengenal dugong/ikan duyung?</label><br>
   <input type="radio" name="kenal" value="Ya" required> Ya
   <input type="radio" name="kenal" value="Tidak"> Tidak
+</div>
 
-<div <label for="sumber_dugong">Dari mana Anda mengetahui dugong?</b></label><br>
-<input type="text"
-       id="sumber_dugong"
-       name="sumber_dugong"
-       placeholder="Contoh: melihat langsung, cerita nelayan, media, dll"
-       required>
+<div class="form-group">
+  <label for="sumber_dugong">Dari mana Anda mengetahui dugong?</label><br>
+  <input type="text"
+         id="sumber_dugong"
+         name="sumber_dugong"
+         placeholder="Contoh: melihat langsung, cerita nelayan, media, dll"
+         required>
+</div>
 
-<div <label>Seberapa sering menurut Anda dugong terlihat di perairan sekitar sini?</b></label><br>
+<div class="form-group">
+  <label>Seberapa sering menurut Anda dugong terlihat di perairan sekitar sini?</label><br>
 
-<label><input type="radio" name="frekuensi_dugong" value="1" required> 1</label> Tidak pernah<br>
-<label><input type="radio" name="frekuensi_dugong" value="2"> 2</label> Jarang (&lt;1x/tahun)<br>
-<label><input type="radio" name="frekuensi_dugong" value="3"> 3</label> Kadang (1–4x/tahun)<br>
-<label><input type="radio" name="frekuensi_dugong" value="4"> 4</label> Cukup sering (5–12x/tahun)<br>
-<label><input type="radio" name="frekuensi_dugong" value="5"> 5</label> Sering (&gt;12x/tahun)
+  <label><input type="radio" name="frekuensi_dugong" value="1" required> Tidak pernah</label><br>
+  <label><input type="radio" name="frekuensi_dugong" value="2"> Jarang (&lt;1x/tahun)</label><br>
+  <label><input type="radio" name="frekuensi_dugong" value="3"> Kadang (1–4x/tahun)</label><br>
+  <label><input type="radio" name="frekuensi_dugong" value="4"> Cukup sering (5–12x/tahun)</label><br>
+  <label><input type="radio" name="frekuensi_dugong" value="5"> Sering (&gt;12x/tahun)</label>
+</div>
 
 <hr>
 
@@ -130,7 +139,7 @@
   <label><b>Pernah melihat duyung hidup secara langsung?</b></label><br>
 
 <label>
-  <input type="radio" name="melihat_duyung" value="sering" required>
+  <input type="radio" name="melihat_duyung" value="sering">
   1. Ya, sering (&gt;5x)
 </label><br>
 
@@ -155,7 +164,7 @@
 <label><b>Jumlah individu yang dilihat</b></label><br>
 
 <label>
-   <input type="radio" name="jumlah_individu" value="sendirian" required>
+   <input type="radio" name="jumlah_individu" value="sendirian">
    Sendirian
 </label><br>
 
@@ -234,13 +243,13 @@
 
 <label>
   Panjang (meter):
-  <input type="number" step="0.1" min="0" placeholder="contoh: 2.5">
+ <input type="number" name="panjang_dugong" step="0.1">
 </label>
 <br><br>
 
 <label>
   Berat (kg):
-  <input type="number" step="1" min="0" placeholder="contoh: 300">
+  <input type="number" name="berat_dugong" step="1">
 </div>
 
 
@@ -251,7 +260,7 @@
 <label><b>Pernah menangkap Duyung tidak sengaja (by catch)?</b></label><br>
 
 <label>
-  <input type="radio" name="bycatch_status" value="ya_sendiri" required>
+  <input type="radio" name="bycatch_status" value="ya_sendiri">
   1. Ya, sendiri
 </label><br>
 
@@ -343,9 +352,6 @@ document.getElementById("jenisKejadian").addEventListener("change", function () 
 });
 </script>
 
-</body>
-</html>
-
 <hr>
 
     <div class="form-group">
@@ -359,56 +365,58 @@ document.getElementById("jenisKejadian").addEventListener("change", function () 
 
     <button type="submit">Kirim Kuesioner</button>
 
-</form>
+<form id="surveyForm">
 
 <!-- JS Leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
     // Inisialisasi peta
-    var map = L.map('map').setView([1.05, 104.03], 10); // contoh: Bintan
+    var map = L.map('map').setView([1.05, 104.03], 10);
 
-    // Basemap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
     var marker;
 
-    // Event klik peta
     map.on('click', function(e) {
         var lat = e.latlng.lat;
         var lng = e.latlng.lng;
 
-        // Hapus marker lama
         if (marker) {
             map.removeLayer(marker);
         }
 
-        // Tambah marker baru
         marker = L.marker([lat, lng]).addTo(map);
 
-        // Simpan koordinat
         document.getElementById('lat').value = lat;
         document.getElementById('lng').value = lng;
     });
-
-    // Submit form
-    document.getElementById('surveyForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        if (!document.getElementById('lat').value) {
-            alert("Silakan pilih lokasi di peta terlebih dahulu!");
-            return;
-        }
-
-        alert("Kuesioner berhasil dikirim!");
-        // nanti di sini bisa dikirim ke database / spreadsheet
-    });
 </script>
 
-</body>
-</html>
+<script>
+document.getElementById("surveyForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+
+  fetch("https://script.google.com/macros/s/AKfycbzwkkJSHZchXG24oDzqFlBB7Njpm_5KsdNoVMjsAZm8GvQJ4BM1pLLyY48nOErDnHpg/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(response => {
+    alert("Data berhasil dikirim!");
+    document.getElementById("surveyForm").reset();
+  })
+  .catch(error => {
+    alert("Terjadi kesalahan!");
+  });
+});
+</script>
+</script>
 
 <br><br>
 <hr>
@@ -424,3 +432,5 @@ document.getElementById("jenisKejadian").addEventListener("change", function () 
     tampubolonjoshua09@gmail.com
   </a>
 </p>
+</body>
+</html>
